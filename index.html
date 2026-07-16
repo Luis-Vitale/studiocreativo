@@ -238,13 +238,12 @@
     </header>
 
     <div class="notice-box">
-        ⚠️ <strong> Come funziona?</strong> L'invio di questo modulo è una semplice richiesta gratuita per verificare la fattibilità del disegno. Non paghi nulla online! Pagherai comodamente in contanti o carta solo al momento del ritiro del prodotto pronto nel nostro laboratorio o al momento della spedizione.
-        
+        ⚠️ <strong>Come funziona?</strong>L'invio di questo modulo è una semplice richiesta gratuita per verificare la fattibilità del disegno. Non paghi nulla online! Pagherai comodamente in contanti o carta solo al momento del ritiro del prodotto pronto nel nostro laboratorio o al momento della spedizione.
     </div>
 
     <form id="orderForm">
         
-      <!-- SEZIONE 1: SCELTA DEL MODELLO DI MAGLIETTA -->
+        <!-- SEZIONE 1: SCELTA DEL MODELLO DI MAGLIETTA -->
         <div class="form-group">
             <div class="section-title">1. Scegli il modello di maglietta:</div>
             <div class="tshirt-grid">
@@ -258,19 +257,23 @@
                     <h4>Classica</h4>
                     <div class="price">€ 10,00</div>
                 </div>
+
+              
+
                 <!-- Modello 2 -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'Canotta Sportiva', 'M 8,00')">
                     <div class="tshirt-placeholder">
                         <!-- Sostituisci questo <svg> con <img src="canotta.jpg"> quando hai la foto -->
                         <svg viewBox="0 0 24 24"><path d="M2,4v4h2v12c0,1.1,0.9,2,2,2h12c1.1,0,2,-0.9,2,-2V8h2V4H2z M16,8H8V6h8V8z"/></svg>
                     </div>
-                    <h4>Canotta</h4>
+                    <h4>Canotta Sportiva</h4>
                     <div class="price">€ 8,00</div>
                 </div>
 
             </div>
             <input type="hidden" id="selectedModel" value="T-Shirt Classica (€ 10,00)">
         </div>
+
         <!-- SEZIONE 2: SCRITTA PERSONALIZZATA -->
         <div class="form-group">
             <div class="section-title">2. Inserisci il testo da stampare:</div>
@@ -279,7 +282,7 @@
 
         <!-- SEZIONE 3: SELEZIONE TRA I 10 FONT RICHIESTI -->
         <div class="form-group">
-            <div class="section-title">3. Seleziona lo stile della scrtta:</div>
+            <div class="section-title">3. Seleziona lo stile della scritta:</div>
             <select id="fontSelector" onchange="updatePreview()">
                 <option value="'Poppins', sans-serif">1. Moderno Pulito (Standard)</option>
                 <option value="'Caveat', cursive">2. Corsivo Elegante (Scritto a mano)</option>
