@@ -247,27 +247,27 @@
                 <!-- Modello 1: T-Shirt Classica -->
                 <div class="tshirt-card selected" onclick="selectTshirt(this, 'T-Shirt Classica', '€ 10,00')">
                     <div class="tshirt-placeholder">
-                        <img src="t-shirt%20classica.png" alt="T-Shirt Classica">
+                        <img src="t-shirt classica.png" alt="T-Shirt Classica">
                     </div>
                     <h4>T-Shirt Classica</h4>
                     <div class="price">€ 10,00</div>
                 </div>
 
-                <!-- Modello 2: T-shirt Creeper -->
-                <div class="tshirt-card" onclick="selectTshirt(this, 'T-shirt Creeper', '€ 12,00')">
+                <!-- Modello 2: T-shirt Crepeer -->
+                <div class="tshirt-card" onclick="selectTshirt(this, 'T-shirt Crepeer', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="minecraft%20creeper.png" alt="T-Shirt Oversize">
+                        <img src="minecraft creeper.png" alt="T-shirt Crepeer">
                     </div>
-                    <h4>T-shirt Creeper</h4>
+                    <h4>T-shirt Crepeer</h4>
                     <div class="price">€ 12,00</div>
                 </div>
 
                 <!-- Modello 3: Canotta Sportiva -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'Canotta Sportiva', '€ 8,00')">
                     <div class="tshirt-placeholder">
-                        <img src="canotta%20sportiva.png" alt="Canotta Sportiva">
+                        <img src="canotta sportiva.png" alt="Canotta Sportiva">
                     </div>
-                    <h4>Canotta Sportiva</h4>
+                    <h4>Canotta Spoertiva</h4>
                     <div class="price">€ 8,00</div>
                 </div>
 
@@ -324,23 +324,27 @@
 <script>
     // Gestione selezione modello maglietta
     function selectTshirt(element, modelName, price) {
-        document.querySelectorAll('.tshirt-card').forEach(card => card.classList.remove('selected'));
+        document.querySelectorAll('.tshirt-card').forEach(function(card) {
+            card.classList.remove('selected');
+        });
         element.classList.add('selected');
-        document.getElementById('selectedModel').value = `${modelName} (${price})`;
+        document.getElementById('selectedModel').value = modelName + ' (' + price + ')';
     }
 
     // Gestione selezione tipo grafica
     function selectType(element, typeValue) {
-        document.querySelectorAll('.type-card').forEach(card => card.classList.remove('selected'));
+        document.querySelectorAll('.type-card').forEach(function(card) {
+            card.classList.remove('selected');
+        });
         element.classList.add('selected');
         document.getElementById('selectedType').value = typeValue;
     }
 
     // Aggiornamento anteprima font in tempo reale
     function updatePreview() {
-        const testo = document.getElementById('testoScritta').value;
-        const fontSelezionato = document.getElementById('fontSelector').value;
-        const box = document.getElementById('previewBox');
+        var testo = document.getElementById('testoScritta').value;
+        var fontSelezionato = document.getElementById('fontSelector').value;
+        var box = document.getElementById('previewBox');
         
         box.style.fontFamily = fontSelezionato;
         box.innerText = testo ? testo : "Anteprima Stile";
@@ -348,24 +352,24 @@
 
     // Invio dei dati formattati su WhatsApp
     function submitToWhatsApp() {
-        const mioNumero = "393511751215"; // CAMBIA QUESTO NUMERO CON IL TUO NUMERO REALE (lascia il 39 iniziale)
+        var mioNumero = "393511751215"; // CAMBIA QUESTO NUMERO CON IL TUO NUMERO REALE (lascia il 39 iniziale)
         
-        const modello = document.getElementById('selectedModel').value;
-        const testo = document.getElementById('testoScritta').value || "Nessun testo inserito";
-        const font = document.getElementById('fontSelector').options[document.getElementById('fontSelector'].selectedIndex].text;
-        const tipoGrafica = document.getElementById('selectedType').value;
-        const note = document.getElementById('noteDettagli').value || "Nessuna nota extra aggiunta";
+        var modello = document.getElementById('selectedModel').value;
+        var testo = document.getElementById('testoScritta').value || "Nessun testo inserito";
+        var font = document.getElementById('fontSelector').options[document.getElementById('fontSelector').selectedIndex].text;
+        var tipoGrafica = document.getElementById('selectedType').value;
+        var note = document.getElementById('noteDettagli').value || "Nessuna nota extra aggiunta";
 
-        const messaggioCompleto = `Ciao! Ho configurato una richiesta dal sito:\n\n` +
-                                  `👕 Modello Capo: ${modello}\n` +
-                                  `📝 Testo da Stampa: ${testo}\n` +
-                                  `🔤 Font Selezionato: ${font}\n` +
-                                  `🎨 Tipo di Stampa: ${tipoGrafica}\n` +
-                                  `💡 Note e Taglia: ${note}\n\n` +
-                                  `Ritiro e pagamento avverranno direttamente in laboratorio quando pronto!`;
+        var messaggioCompleto = "Ciao! Ho configurato una richiesta dal sito:\n\n" +
+                                "👕 Modello Capo: " + modello + "\n" +
+                                "📝 Testo da Stampa: " + testo + "\n" +
+                                "🔤 Font Selezionato: " + font + "\n" +
+                                "🎨 Tipo di Stampa: " + tipoGrafica + "\n" +
+                                "💡 Note e Taglia: " + note + "\n\n" +
+                                "Ritiro e pagamento avverranno direttamente in laboratorio quando pronto!";
 
-        const urlFinale = encodeURIComponent(messaggioCompleto);
-        window.open(`https://wa.me/${mioNumero}?text=${urlFinale}`, '_blank');
+        var urlFinale = encodeURIComponent(messaggioCompleto);
+        window.open("https://wa.me/" + mioNumero + "?text=" + urlFinale, "_blank");
     }
 </script>
 
