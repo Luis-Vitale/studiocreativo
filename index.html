@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio Creativo - T-Shirt Personalizzate</title>
-    <!-- Font Google per un look moderno -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&family=Bangers&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <title>Studio Creativo - T-Shirt Personalizzate</title>
+    <!-- Caricamento di tutti i 10 Font da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&family=Bangers&family=Courier+Prime:wght@700&family=Permanent+Marker&family=Creepster&family=Cinzel:wght@700&family=Lobster&family=Press+Start+2P&family=Rubik+Glitch&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff4757;
-            --dark: #2f3542;
-            --light: #f1f2f6;
+            --dark: #1e222b;
+            --card-bg: #2d323f;
+            --input-bg: #1e222b;
             --text: #ffffff;
+            --success: #2ed573;
         }
 
         * {
@@ -24,7 +26,7 @@
         body {
             background-color: var(--dark);
             color: var(--text);
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
         }
@@ -32,36 +34,37 @@
         .container {
             max-width: 600px;
             width: 100%;
-            background: #3f4451; 
+            background: var(--card-bg);
             padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary);
-            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            opacity: 0.7;
+            margin-top: 5px;
         }
 
-        /* Box Avviso Importante richiesto */
         .notice-box {
-            background: rgba(255, 71, 87, 0.15);
+            background: rgba(255, 71, 87, 0.12);
             border-left: 4px solid var(--primary);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 25px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.4;
         }
 
@@ -69,117 +72,155 @@
             color: #ff6b81;
         }
 
-        /* Preview Maglietta e Prezzo */
-        .product-preview {
-            background: #2f3542;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        /* SVG di una t-shirt stilizzata se non hai ancora la foto */
-        .tshirt-icon {
-            width: 150px;
-            height: 150px;
-            fill: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .price-tag {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2ed573;
-            margin-top: 5px;
-        }
-
-        .price-info {
-            font-size: 0.75rem;
-            opacity: 0.6;
-            margin-top: 2px;
-        }
-
-        /* Form di configurazione */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
+        .section-title {
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #f1f2f6;
         }
 
-        select, textarea, input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            background: #2f3542;
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* Nuova Griglia Selezione Modelli Maglietta */
+        .tshirt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .tshirt-card {
+            background: var(--input-bg);
             border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .tshirt-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .tshirt-card.selected {
+            border-color: var(--primary);
+            background: rgba(255, 71, 87, 0.08);
+        }
+
+        .tshirt-placeholder {
+            width: 100%;
+            height: 90px;
+            background: #3a3f50;
             border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Icona temporanea prima che metti le tue foto vere */
+        .tshirt-placeholder svg {
+            width: 50px;
+            height: 50px;
+            fill: #747d8c;
+        }
+
+        /* Stile per quando caricherai le foto vere delle maglie */
+        .tshirt-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tshirt-card h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .tshirt-card .price {
+            font-size: 0.9rem;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Input di testo e selezioni */
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 14px;
+            background: var(--input-bg);
+            border: 2px solid #3a3f50;
+            border-radius: 12px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: 0.3s;
         }
 
-        select:focus, textarea:focus, input[type="text"]:focus {
+        input[type="text"]:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
         }
 
-        /* Anteprima Font Dinamica */
+        /* Box Anteprima Font Dinamica */
         .font-preview-box {
-            background: #2f3542;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 10px;
+            background: var(--input-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 12px;
             text-align: center;
-            min-height: 50px;
+            min-height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            border: 1px dashed #57606f;
+            font-size: 1.5rem;
+            border: 2px dashed #3a3f50;
+            word-break: break-word;
         }
 
-        /* Opzioni Immagini/Grafiche */
-        .grid-options {
+        /* Griglia Tipo di Grafica aggiornata */
+        .type-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
-        .grid-item {
-            background: #2f3542;
-            padding: 12px;
-            border-radius: 10px;
+        .type-card {
+            background: var(--input-bg);
+            padding: 14px;
+            border-radius: 12px;
             text-align: center;
             cursor: pointer;
             border: 2px solid transparent;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.2s;
         }
 
-        .grid-item.selected {
+        .type-card.selected {
             border-color: var(--primary);
-            background: rgba(255, 71, 87, 0.1);
+            background: rgba(255, 71, 87, 0.08);
         }
 
-        /* Bottone d'invio */
         .btn-submit {
             display: block;
             width: 100%;
-            padding: 15px;
-            background: #2ed573;
+            padding: 16px;
+            background: var(--success);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 14px;
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
             transition: 0.2s;
             text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(46, 213, 115, 0.3);
+            box-shadow: 0 6px 15px rgba(46, 213, 115, 0.25);
+            margin-top: 10px;
         }
 
         .btn-submit:hover {
@@ -193,106 +234,145 @@
 <div class="container">
     <header>
         <h1>Studio Creativo</h1>
-        <p>Disegna la tua maglietta personalizzata</p>
+        <p>Configura la tua t-shirt e invia l'idea al laboratorio</p>
     </header>
 
-    <!-- Informativa sul pagamento al ritiro richiesto -->
     <div class="notice-box">
-        ⚠️ <strong>Come funziona?</strong> L'invio di questo modulo è una semplice <strong>richiesta gratuita</strong> per verificare la fattibilità del disegno. Non paghi nulla adesso online! Il pagamento avverrà solo ed esclusivamente quando il prodotto stampato sarà pronto per essere ritirato in laboratorio.
+        ⚠️ <strong>Info sul Servizio:</strong> Questo modulo è una richiesta di fattibilità gratuita. Non paghi nulla online! Pagherai comodamente in contanti o carta solo al momento del ritiro del prodotto pronto nel nostro laboratorio.
     </div>
 
-    <!-- Foto Prodotto e Prezzo Informativo -->
-    <div class="product-preview">
-        <!-- SVG T-Shirt segnaposto. Sostituisci il tag <svg> con un tag <img src="tua-foto.jpg"> quando avrai la foto reale -->
-        <svg class="tshirt-icon" viewBox="0 0 24 24">
-            <path d="M18,2H14.79A4,4,0,0,0,9.21,2H6A2,2,0,0,0,4,4V9a1,1,0,0,0,1,1H7V21a1,1,0,0,0,1,1H16a1,1,0,0,0,1,-1V10h2a1,1,0,0,0,1,-1V4A2,2,0,0,0,18,2Z"/>
-        </svg>
-        <h3>T-Shirt Classica Mezza Manica</h3>
-        <div class="price-tag">€ 15,00</div>
-        <div class="price-info">(Prezzo puramente informativo comprensivo di t-shirt e stampa termoadesiva basica)</div>
-    </div>
-
-    <!-- Inizio Form Opzioni -->
-    <form id="requestForm">
+    <form id="orderForm">
         
+        <!-- SEZIONE 1: SCELTA DEL MODELLO DI MAGLIETTA -->
         <div class="form-group">
-            <label for="scritta">La scritta che vuoi stampare:</label>
-            <input type="text" id="scritta" placeholder="Scrivi qui il testo (es. Nome, Citazione...)" oninput="updateFontPreview()">
-        </div>
+            <div class="section-title">1. Scegli il modello di maglietta:</div>
+            <div class="tshirt-grid">
+                
+                <!-- Modello 1 -->
+                <div class="tshirt-card selected" onclick="selectTshirt(this, 'T-Shirt Classica', '€ 15,00')">
+                    <div class="tshirt-placeholder">
+                        <!-- Sostituisci questo <svg> con <img src="classica.jpg"> quando hai la foto -->
+                        <svg viewBox="0 0 24 24"><path d="M18,2H14.79A4,4,0,0,0,9.21,2H6A2,2,0,0,0,4,4V9a1,1,0,0,0,1,1H7V21a1,1,0,0,0,1,1H16a1,1,0,0,0,1,-1V10h2a1,1,0,0,0,1,-1V4A2,2,0,0,0,18,2Z"/></svg>
+                    </div>
+                    <h4>Classica</h4>
+                    <div class="price">€ 15,00</div>
+                </div>
 
-        <div class="form-group">
-            <label for="fontSelect">Scegli lo stile della scritta (Font):</label>
-            <select id="fontSelect" onchange="updateFontPreview()">
-                <option value="'Poppins', sans-serif">Moderno / Pulito</option>
-                <option value="'Caveat', cursive">Scritta a mano (Corsivo)</option>
-                <option value="'Bangers', cursive">Stile Fumetto / Impatto</option>
-                <option value="'Courier Prime', monospace">Macchina da scrivere</option>
-            </select>
-            <!-- Box di anteprima del font in tempo reale -->
-            <div class="font-preview-box" id="fontPreview">Anteprima testo</div>
-        </div>
+                <!-- Modello 2 -->
+                <div class="tshirt-card" onclick="selectTshirt(this, 'T-Shirt Oversize', '€ 18,00')">
+                    <div class="tshirt-placeholder">
+                        <!-- Sostituisci questo <svg> con <img src="oversize.jpg"> quando hai la foto -->
+                        <svg viewBox="0 0 24 24"><path d="M18,2H14.79A4,4,0,0,0,9.21,2H6A2,2,0,0,0,4,4V9a1,1,0,0,0,1,1H7V21a1,1,0,0,0,1,1H16a1,1,0,0,0,1,-1V10h2a1,1,0,0,0,1,-1V4A2,2,0,0,0,18,2Z"/></svg>
+                    </div>
+                    <h4>Oversize</h4>
+                    <div class="price">€ 18,00</div>
+                </div>
 
-        <div class="form-group">
-            <label>O preferisci una grafica/immagine?</label>
-            <div class="grid-options">
-                <div class="grid-item" onclick="selectGraphic(this, 'Solo Testo')">Solo Testo</div>
-                <div class="grid-item" onclick="selectGraphic(this, 'Logo Minimalista')">Logo Minimalista</div>
-                <div class="grid-item" onclick="selectGraphic(this, 'Disegno Geometrico')">Disegno Geometrico</div>
-                <div class="grid-item" onclick="selectGraphic(this, 'Altro (Specificato sotto)')">Altro (Usa note sotto)</div>
+                <!-- Modello 3 -->
+                <div class="tshirt-card" onclick="selectTshirt(this, 'Canotta Sportiva', 'M 14,00')">
+                    <div class="tshirt-placeholder">
+                        <!-- Sostituisci questo <svg> con <img src="canotta.jpg"> quando hai la foto -->
+                        <svg viewBox="0 0 24 24"><path d="M2,4v4h2v12c0,1.1,0.9,2,2,2h12c1.1,0,2,-0.9,2,-2V8h2V4H2z M16,8H8V6h8V8z"/></svg>
+                    </div>
+                    <h4>Canotta</h4>
+                    <div class="price">€ 14,00</div>
+                </div>
+
             </div>
-            <input type="hidden" id="selectedGraphic" value="Nessuna selezionata">
+            <input type="hidden" id="selectedModel" value="T-Shirt Classica (€ 15,00)">
         </div>
 
-        <!-- Sezione descrizione libera per cose non presenti sul sito -->
+        <!-- SEZIONE 2: SCRITTA PERSONALIZZATA -->
         <div class="form-group">
-            <label for="descrizione">Descrivi la tua idea nei dettagli:</label>
-            <textarea id="descrizione" rows="4" placeholder="Spiega qui la tua idea grafica, i colori che preferisci, la taglia (S, M, L, XL) o qualsiasi richiesta particolare non presente nell'elenco..."></textarea>
+            <div class="section-title">2. Inserisci il testo da stampare (Opzionale):</div>
+            <input type="text" id="testoScritta" placeholder="Esempio: Nome, Anno di nascita, Frase..." oninput="updatePreview()">
         </div>
 
-        <button type="button" class="btn-submit" onclick="sendRequest()">Invia Richiesta Gratuita</button>
+        <!-- SEZIONE 3: SELEZIONE TRA I 10 FONT RICHIESTI -->
+        <div class="form-group">
+            <div class="section-title">3. Seleziona lo stile della scritta (10 Font disponibili):</div>
+            <select id="fontSelector" onchange="updatePreview()">
+                <option value="'Poppins', sans-serif">1. Moderno Pulito (Standard)</option>
+                <option value="'Caveat', cursive">2. Corsivo Elegante (Scritto a mano)</option>
+                <option value="'Bangers', cursive">3. Fumetto / Pop Art</option>
+                <option value="'Courier Prime', monospace">4. Macchina da Scrivere / Retro</option>
+                <option value="'Permanent Marker', cursive">5. Pennarello / Streetwear</option>
+                <option value="'Creepster', system-ui">6. Horror / Halloween</option>
+                <option value="'Cinzel', serif">7. Romano Classico / Solenne</option>
+                <option value="'Lobster', cursive">8. Vintage Americano / Soft</option>
+                <option value="'Press Start 2P', system-ui">9. Pixel Art / Gaming 8-Bit</option>
+                <option value="'Rubik Glitch', system-ui">10. Cyberpunk / Distorto</option>
+            </select>
+            <div class="font-preview-box" id="previewBox">Anteprima Stile</div>
+        </div>
+
+        <!-- SEZIONE 4: STILE DELLA GRAFICA AGGIORNATA -->
+        <div class="form-group">
+            <div class="section-title">4. Che tipo di grafica immagini?</div>
+            <div class="type-grid">
+                <div class="type-card selected" onclick="selectType(this, 'Solo Scritta')">Solo Scritta</div>
+                <div class="type-card" onclick="selectType(this, 'Scritta + Piccolo Logo')">Scritta + Logo</div>
+                <div class="type-card" onclick="selectType(this, 'Disegno Grande Centrale')">Disegno Grande</div>
+                <div class="type-card" onclick="selectType(this, 'Idea totalmente su misura')">Idea Custom</div>
+            </div>
+            <input type="hidden" id="selectedType" value="Solo Scritta">
+        </div>
+
+        <!-- SEZIONE 5: NOTE LIBERE -->
+        <div class="form-group">
+            <div class="section-title">5. Descrivi la tua idea nei dettagli (Taglia, Colori...):</div>
+            <textarea id="noteDettagli" rows="4" placeholder="Indica qui la taglia che ti serve (S, M, L, XL), il colore della maglietta (Bianca, Nera, Rossa...) e spiegami come immagini la stampa o se hai un'immagine tua da inviarmi..."></textarea>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="submitToWhatsApp()">Invia Progetto su WhatsApp</button>
     </form>
 </div>
 
 <script>
-    // Gestione selezione delle grafiche a griglia
-    function selectGraphic(element, value) {
-        document.querySelectorAll('.grid-item').forEach(item => item.classList.remove('selected'));
+    // Gestione selezione modello maglietta
+    function selectTshirt(element, modelName, price) {
+        document.querySelectorAll('.tshirt-card').forEach(card => card.classList.remove('selected'));
         element.classList.add('selected');
-        document.getElementById('selectedGraphic').value = value;
+        document.getElementById('selectedModel').value = `${modelName} (${price})`;
     }
 
-    // Aggiorna l'anteprima del testo con il font selezionato
-    function updateFontPreview() {
-        const testo = document.getElementById('scritta').value;
-        const font = document.getElementById('fontSelect').value;
-        const preview = document.getElementById('fontPreview');
-        
-        preview.style.fontFamily = font;
-        preview.innerText = testo ? testo : "Anteprima testo";
+    // Gestione selezione tipo grafica
+    function selectType(element, typeValue) {
+        document.querySelectorAll('.type-card').forEach(card => card.classList.remove('selected'));
+        element.classList.add('selected');
+        document.getElementById('selectedType').value = typeValue;
     }
 
-    // Funzione d'invio che genera il messaggio per te
-    function sendRequest() {
-        const numeroWhatsApp = "393511751215"; // CAMBIA QUESTO NUMERO CON IL TUO (con 39 davanti)
+    // Aggiornamento anteprima font in tempo reale
+    function updatePreview() {
+        const testo = document.getElementById('testoScritta').value;
+        const font Selezionato = document.getElementById('fontSelector').value;
+        const box = document.getElementById('previewBox');
         
-        const scritta = document.getElementById('scritta').value || "Nessuna";
-        const font = document.getElementById('fontSelect').options[document.getElementById('fontSelect').selectedIndex].text;
-        const grafica = document.getElementById('selectedGraphic').value;
-        const descrizione = document.getElementById('descrizione').value || "Nessuna nota aggiuntiva";
+        box.style.fontFamily = fontSelezionato;
+        box.innerText = testo ? testo : "Anteprima Stile";
+    }
 
-        // Costruiamo il testo ordinato che ti arriverà sul telefono
-        const messaggio = `Ciao! Vorrei fare una richiesta per una maglietta personalizzata:\n\n` +
-                          `📝 Scritta: ${scritta}\n` +
-                          `🔤 Stile Font: ${font}\n` +
-                          `🎨 Tipo Grafica: ${grafica}\n` +
-                          `💡 Dettagli e note: ${descrizione}\n\n` +
-                          `Ho letto che la richiesta è gratuita e che pagherò direttamente al ritiro del prodotto pronto!`;
-
-        // Codifica il testo per gli URL
-        const urlMessaggio = encodeURIComponent(messaggio);
+    // Invio dei dati formattati su WhatsApp
+    function submitToWhatsApp() {
+        const mioNumero = "393330000000"; // CAMBIA QUESTO NUMERO CON IL TUO NUMERO REALE (lascia il 39 iniziale)
         
-        // Apre la chat di WhatsApp direttamente con il messaggio pronto da inviare
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${urlMessaggio}`, '_blank');
+        const modello = document.getElementById('selectedModel').value;
+        const testo = document.getElementById('testoScritta').value || "Nessun testo inserito";
+        const font = document.getElementById('fontSelector').options[document.getElementById('fontSelector'].selectedIndex].text;
+        const tipoGrafica = document.getElementById('selectedType').value;
+        const note = document.getElementById('noteDettagli').value || "Nessuna nota extra aggiunta";
+
+        const messaggioCompleto = `Ciao! Ho configurato una richiesta dal sito:\n\n` +
+                                  `👕 Modello Capo: ${modello}\n` +
+                                  `📝 Testo da Stampa: ${testo}\n` +
+                                  `🔤 Font Selezionato: ${font}\n` +
+                                  `🎨 Tipo di Stampa: ${tipoGrafica}\n` +
+                                  `💡 Note e Taglia: ${note}\n\n` +
+                                  `Ritiro e pagamento avverranno direttamente in laboratorio quando pronto!`;
+
+        const urlFinale = encodeURIComponent(messaggioCompleto);
+        window.open(`https://wa.me/${mioNumero}?text=${urlFinale}`, '_blank');
     }
 </script>
 
