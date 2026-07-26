@@ -230,61 +230,30 @@
 <div class="container">
     <header>
         <h1>Studio Creativo</h1>
-        <p>Disegna la tua maglietta personalizzata e invia l'idea al laboratorio</p>
+        <p>Scegli la tua maglietta personalizzata e invia la richiesta al laboratorio</p>
     </header>
 
     <div class="notice-box">
-        ⚠️ <strong>Come funziona?</strong> L'invio di questo modulo è una semplice richiesta gratuita per verificare la fattibilità del disegno. Non paghi nulla online! Pagherai comodamente in contanti o carta solo al momento del ritiro del prodotto pronto nel nostro laboratorio o al momento della spedizione.
+        ⚠️ <strong>Come funziona?</strong> L'invio di questo modulo è una semplice richiesta gratuita per verificare la disponibilità del modello. Non paghi nulla online! Pagherai comodamente in contanti o carta solo al momento del ritiro del prodotto pronto nel nostro laboratorio o al momento della spedizione.
     </div>
 
     <form id="orderForm">
         
         <!-- SEZIONE 1: SCELTA DEL MODELLO DI MAGLIETTA -->
         <div class="form-group">
-            <div class="section-title">1. Scegli il modello di maglietta:</div>
+            <div class="section-title">1. Scegli la grafica della maglietta:</div>
             <div class="tshirt-grid">
                 
-                <!-- Modello 1: T-Shirt Classica -->
-                <div class="tshirt-card selected" onclick="selectTshirt(this, 'T-Shirt Classica', '€ 10,00')">
-                    <div class="tshirt-placeholder">
-                        <img src="t-shirt classica.png" alt="T-Shirt Classica">
-                    </div>
-                    <h4>T-Shirt Classica</h4>
-                    <div class="price">€ 10,00</div>
-                </div>
-
-                <!-- Modello 2: T-shirt Crepeer -->
-                <div class="tshirt-card" onclick="selectTshirt(this, 'T-shirt Crepeer', '€ 12,00')">
-                    <div class="tshirt-placeholder">
-                        <img src="minecraft creeper.png" alt="T-shirt Crepeer">
-                    </div>
-                    <h4>T-shirt Crepeer</h4>
-                    <div class="price">€ 12,00</div>
-                </div>
-
-                <!-- Modello 3: Canotta Sportiva -->
-                <div class="tshirt-card" onclick="selectTshirt(this, 'Canotta Sportiva', '€ 8,00')">
-                    <div class="tshirt-placeholder">
-                        <img src="canotta sportiva.png" alt="Canotta Sportiva">
-                    </div>
-                    <h4>Canotta Spoertiva</h4>
-                    <div class="price">€ 8,00</div>
-                </div>
-
-            </div>
-            <input type="hidden" id="selectedModel" value="T-Shirt Classica (€ 10,00)">
-        </div> 
-                
-                <!-- Modello 4: Nether Rift -->
+                <!-- Maglietta 1: NETHER RIFT -->
                 <div class="tshirt-card selected" onclick="selectTshirt(this, 'NETHER RIFT', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="nether%20rift.png" alt="NETHER RIFT">
+                        <img src="nether rift.png" alt="NETHER RIFT">
                     </div>
                     <h4>NETHER RIFT</h4>
                     <div class="price">€ 12,00</div>
                 </div>
 
-                <!-- Modello 5: Ghast -->
+                <!-- Maglietta 2: GHAST -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'GHAST', '€ 12,00')">
                     <div class="tshirt-placeholder">
                         <img src="ghast.png" alt="GHAST">
@@ -293,10 +262,10 @@
                     <div class="price">€ 12,00</div>
                 </div>
 
-                <!-- Modello 6: Ancient Debris -->
+                <!-- Maglietta 3: ANCIENT DEBRIS -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'ANCIENT DEBRIS', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="ancient%20debris.png" alt="ANCIENT DEBRIS">
+                        <img src="ancient debris.png" alt="ANCIENT DEBRIS">
                     </div>
                     <h4>ANCIENT DEBRIS</h4>
                     <div class="price">€ 12,00</div>
@@ -304,16 +273,17 @@
 
             </div>
             <input type="hidden" id="selectedModel" value="NETHER RIFT (€ 12,00)">
-        </div> 
+        </div>
+
         <!-- SEZIONE 2: SCRITTA PERSONALIZZATA -->
         <div class="form-group">
-            <div class="section-title">2. Inserisci il testo da stampare:</div>
-            <input type="text" id="testoScritta" placeholder="Esempio: Nome, Anno di nascita, Frase..." oninput="updatePreview()">
+            <div class="section-title">2. Inserisci un testo extra opzionale da stampare:</div>
+            <input type="text" id="testoScritta" placeholder="Esempio: GamerTag, Nome, Anno..." oninput="updatePreview()">
         </div>
 
         <!-- SEZIONE 3: SELEZIONE TRA I 10 FONT RICHIESTI -->
         <div class="form-group">
-            <div class="section-title">3. Seleziona lo stile della scritta:</div>
+            <div class="section-title">3. Seleziona lo stile del testo extra:</div>
             <select id="fontSelector" onchange="updatePreview()">
                 <option value="'Poppins', sans-serif">1. Moderno Pulito (Standard)</option>
                 <option value="'Caveat', cursive">2. Corsivo Elegante (Scritto a mano)</option>
@@ -331,23 +301,23 @@
 
         <!-- SEZIONE 4: STILE DELLA GRAFICA -->
         <div class="form-group">
-            <div class="section-title">4. Che tipo di grafica immagini?</div>
+            <div class="section-title">4. Personalizzazione della stampa:</div>
             <div class="type-grid">
-                <div class="type-card selected" onclick="selectType(this, 'Solo Scritta')">Solo Scritta</div>
-                <div class="type-card" onclick="selectType(this, 'Scritta + Piccolo Logo')">Scritta + Logo</div>
-                <div class="type-card" onclick="selectType(this, 'Disegno Grande Centrale')">Disegno Grande</div>
-                <div class="type-card" onclick="selectType(this, 'Idea totalmente su misura')">Idea Custom</div>
+                <div class="type-card selected" onclick="selectType(this, 'Grafica Standard')">Grafica Standard</div>
+                <div class="type-card" onclick="selectType(this, 'Grafica + Scritta Extra')">Grafica + Scritta</div>
+                <div class="type-card" onclick="selectType(this, 'Stampa Retro Aggiuntiva')">Stampa sul Retro</div>
+                <div class="type-card" onclick="selectType(this, 'Modifica Personalizzata su Misura')">Idea Custom</div>
             </div>
-            <input type="hidden" id="selectedType" value="Solo Scritta">
+            <input type="hidden" id="selectedType" value="Grafica Standard">
         </div>
 
         <!-- SEZIONE 5: NOTE LIBERE -->
         <div class="form-group">
             <div class="section-title">5. Descrivi la tua idea nei dettagli (Taglia, Colori...):</div>
-            <textarea id="noteDettagli" rows="4" placeholder="Indica qui la taglia che ti serve (S, M, L, XL), il colore della maglietta (Bianca, Nera, Rossa...) e spiegami come immagini la stampa o se hai un'immagine tua da inviarmi..."></textarea>
+            <textarea id="noteDettagli" rows="4" placeholder="Indica qui la taglia che ti serve (S, M, L, XL), il colore della maglietta (Nera, Bianca...) e qualsiasi dettaglio aggiuntivo..."></textarea>
         </div>
 
-        <button type="button" class="btn-submit" onclick="submitToWhatsApp()">Invia Progetto su WhatsApp</button>
+        <button type="button" class="btn-submit" onclick="submitToWhatsApp()">Invia Ordine su WhatsApp</button>
     </form>
 </div>
 
@@ -382,17 +352,17 @@
 
     // Invio dei dati formattati su WhatsApp
     function submitToWhatsApp() {
-        var mioNumero = "393511751215"; // CAMBIA QUESTO NUMERO CON IL TUO NUMERO REALE (lascia il 39 iniziale)
+        var mioNumero = "393330000000"; // CAMBIA QUESTO NUMERO CON IL TUO NUMERO REALE
         
         var modello = document.getElementById('selectedModel').value;
-        var testo = document.getElementById('testoScritta').value || "Nessun testo inserito";
+        var testo = document.getElementById('testoScritta').value || "Nessun testo extra";
         var font = document.getElementById('fontSelector').options[document.getElementById('fontSelector').selectedIndex].text;
         var tipoGrafica = document.getElementById('selectedType').value;
         var note = document.getElementById('noteDettagli').value || "Nessuna nota extra aggiunta";
 
         var messaggioCompleto = "Ciao! Ho configurato una richiesta dal sito:\n\n" +
                                 "👕 Modello Capo: " + modello + "\n" +
-                                "📝 Testo da Stampa: " + testo + "\n" +
+                                "📝 Testo Extra: " + testo + "\n" +
                                 "🔤 Font Selezionato: " + font + "\n" +
                                 "🎨 Tipo di Stampa: " + tipoGrafica + "\n" +
                                 "💡 Note e Taglia: " + note + "\n\n" +
