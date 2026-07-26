@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Creativo - T-Shirt Personalizzate</title>
+    <!-- Favicon / Logo scheda browser -->
+    <link rel="icon" type="image/png" href="./favicon.png">
     <!-- Caricamento Font da Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&family=Bangers&family=Courier+Prime:wght@700&family=Permanent+Marker&family=Creepster&family=Cinzel:wght@700&family=Lobster&family=Press+Start+2P&family=Rubik+Glitch&display=swap" rel="stylesheet">
     <style>
@@ -87,7 +89,6 @@
             margin-bottom: 25px;
         }
 
-        /* GRIGLIA A 3 COLONNE PERFETTE */
         .tshirt-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -147,7 +148,6 @@
             font-weight: 700;
         }
 
-        /* Input e Selezioni */
         input[type="text"], select, textarea {
             width: 100%;
             padding: 14px;
@@ -239,11 +239,9 @@
 
     <form id="orderForm">
         
-        <!-- SEZIONE 1: SCELTA DEL MODELLO -->
         <div class="form-group">
             <div class="section-title">1. Scegli il modello o la grafica:</div>
             
-            <!-- Prima riga da 3 -->
             <div class="tshirt-grid" style="margin-bottom: 12px;">
                 <div class="tshirt-card selected" onclick="selectTshirt(this, 'T-Shirt Classica', '€ 10,00')">
                     <div class="tshirt-placeholder">
@@ -270,7 +268,6 @@
                 </div>
             </div>
 
-            <!-- Seconda riga da 3 (Nether) -->
             <div class="tshirt-grid">
                 <div class="tshirt-card" onclick="selectTshirt(this, 'NETHER RIFT', '€ 12,00')">
                     <div class="tshirt-placeholder">
@@ -300,13 +297,11 @@
             <input type="hidden" id="selectedModel" value="T-Shirt Classica (€ 10,00)">
         </div>
 
-        <!-- SEZIONE 2: SCRITTA PERSONALIZZATA -->
         <div class="form-group">
             <div class="section-title">2. Inserisci un testo extra opzionale da stampare:</div>
             <input type="text" id="testoScritta" placeholder="Esempio: GamerTag, Nome, Anno..." oninput="updatePreview()">
         </div>
 
-        <!-- SEZIONE 3: SELEZIONE FONT -->
         <div class="form-group">
             <div class="section-title">3. Seleziona lo stile del testo extra:</div>
             <select id="fontSelector" onchange="updatePreview()">
@@ -324,7 +319,6 @@
             <div class="font-preview-box" id="previewBox">Anteprima Stile</div>
         </div>
 
-        <!-- SEZIONE 4: STILE DELLA GRAFICA -->
         <div class="form-group">
             <div class="section-title">4. Personalizzazione della stampa:</div>
             <div class="type-grid">
@@ -336,7 +330,6 @@
             <input type="hidden" id="selectedType" value="Grafica Standard">
         </div>
 
-        <!-- SEZIONE 5: NOTE LIBERE -->
         <div class="form-group">
             <div class="section-title">5. Descrivi la tua idea nei dettagli (Taglia, Colori...):</div>
             <textarea id="noteDettagli" rows="4" placeholder="Indica qui la taglia che ti serve (S, M, L, XL), il colore della maglietta (Nera, Bianca...) e qualsiasi dettaglio aggiuntivo..."></textarea>
@@ -373,7 +366,7 @@
     }
 
     function submitToWhatsApp() {
-        var mioNumero = "393511751215"; // Sostituisci con il tuo numero WhatsApp reale
+        var mioNumero = "393511751215";
         
         var modello = document.getElementById('selectedModel').value;
         var testo = document.getElementById('testoScritta').value || "Nessun testo extra";
