@@ -38,7 +38,7 @@
             max-width: 600px;
             width: 100%;
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: 24px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             margin: 20px 0;
@@ -77,12 +77,9 @@
         }
 
         .section-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 12px;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
             color: #f1f2f6;
         }
 
@@ -90,18 +87,18 @@
             margin-bottom: 25px;
         }
 
-        /* Griglia Selezione Modelli (3 colonne su PC/Schermi grandi, 2/1 su mobile se serve) */
+        /* GRIGLIA A 3 COLONNE PERFETTE */
         .tshirt-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
 
         .tshirt-card {
             background: var(--input-bg);
             border: 2px solid transparent;
-            border-radius: 16px;
-            padding: 12px;
+            border-radius: 14px;
+            padding: 8px;
             text-align: center;
             cursor: pointer;
             transition: 0.25s ease;
@@ -121,10 +118,10 @@
 
         .tshirt-placeholder {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 1 / 1;
             background: #3a3f50;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,18 +135,19 @@
         }
 
         .tshirt-card h4 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 4px;
+            line-height: 1.1;
         }
 
         .tshirt-card .price {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--success);
             font-weight: 700;
         }
 
-        /* Input di testo e selezioni */
+        /* Input e Selezioni */
         input[type="text"], select, textarea {
             width: 100%;
             padding: 14px;
@@ -166,7 +164,6 @@
             border-color: var(--primary);
         }
 
-        /* Box Anteprima Font Dinamica */
         .font-preview-box {
             background: var(--input-bg);
             padding: 20px;
@@ -182,21 +179,20 @@
             word-break: break-word;
         }
 
-        /* Griglia Tipo di Grafica */
         .type-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
 
         .type-card {
             background: var(--input-bg);
-            padding: 14px;
+            padding: 12px;
             border-radius: 12px;
             text-align: center;
             cursor: pointer;
             border: 2px solid transparent;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: 0.2s;
         }
@@ -243,83 +239,76 @@
 
     <form id="orderForm">
         
-        <!-- SEZIONE 1: SCELTA DEL MODELLO DI MAGLIETTA -->
+        <!-- SEZIONE 1: SCELTA DEL MODELLO -->
         <div class="form-group">
-            <div class="section-title">1. Modelli Base:</div>
-            <div class="tshirt-grid">
-                
-                <!-- Classica -->
+            <div class="section-title">1. Scegli il modello o la grafica:</div>
+            
+            <!-- Prima riga da 3 -->
+            <div class="tshirt-grid" style="margin-bottom: 12px;">
                 <div class="tshirt-card selected" onclick="selectTshirt(this, 'T-Shirt Classica', '€ 10,00')">
                     <div class="tshirt-placeholder">
-                        <img src="t-shirt%20classica.png" alt="T-Shirt Classica">
+                        <img src="./t-shirt%20classica.png" alt="Classica">
                     </div>
                     <h4>Classica</h4>
                     <div class="price">€ 10,00</div>
                 </div>
 
-                <!-- Creeper / Oversize -->
-                <div class="tshirt-card" onclick="selectTshirt(this, 'T-Shirt Minecraft Creeper', '€ 12,00')">
+                <div class="tshirt-card" onclick="selectTshirt(this, 'T-Shirt Creeper', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="minecraft%20creeper.png" alt="T-Shirt Creeper">
+                        <img src="./minecraft%20creeper.png" alt="Creeper">
                     </div>
                     <h4>Creeper</h4>
                     <div class="price">€ 12,00</div>
                 </div>
 
-                <!-- Canotta -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'Canotta Sportiva', '€ 8,00')">
                     <div class="tshirt-placeholder">
-                        <img src="canotta%20sportiva.png" alt="Canotta Sportiva">
+                        <img src="./canotta%20sportiva.png" alt="Canotta">
                     </div>
                     <h4>Canotta</h4>
                     <div class="price">€ 8,00</div>
                 </div>
-
             </div>
 
-            <div class="section-title" style="margin-top: 25px;">2. Nuova Collezione Nether (€ 12,00):</div>
+            <!-- Seconda riga da 3 (Nether) -->
             <div class="tshirt-grid">
-
-                <!-- Nether Rift -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'NETHER RIFT', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="nether%20rift.png" alt="NETHER RIFT">
+                        <img src="./nether%20rift.png" alt="NETHER RIFT">
                     </div>
                     <h4>NETHER RIFT</h4>
                     <div class="price">€ 12,00</div>
                 </div>
 
-                <!-- Ghast -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'GHAST', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="ghast.png" alt="GHAST">
+                        <img src="./ghast.png" alt="GHAST">
                     </div>
                     <h4>GHAST</h4>
                     <div class="price">€ 12,00</div>
                 </div>
 
-                <!-- Ancient Debris -->
                 <div class="tshirt-card" onclick="selectTshirt(this, 'ANCIENT DEBRIS', '€ 12,00')">
                     <div class="tshirt-placeholder">
-                        <img src="ancient%20debris.png" alt="ANCIENT DEBRIS">
+                        <img src="./ancient%20debris.png" alt="ANCIENT DEBRIS">
                     </div>
                     <h4>ANCIENT DEBRIS</h4>
                     <div class="price">€ 12,00</div>
                 </div>
-
             </div>
+
             <input type="hidden" id="selectedModel" value="T-Shirt Classica (€ 10,00)">
         </div>
 
         <!-- SEZIONE 2: SCRITTA PERSONALIZZATA -->
         <div class="form-group">
-            <div class="section-title">3. Inserisci un testo extra opzionale da stampare:</div>
+            <div class="section-title">2. Inserisci un testo extra opzionale da stampare:</div>
             <input type="text" id="testoScritta" placeholder="Esempio: GamerTag, Nome, Anno..." oninput="updatePreview()">
         </div>
 
         <!-- SEZIONE 3: SELEZIONE FONT -->
         <div class="form-group">
-            <div class="section-title">4. Seleziona lo stile del testo extra:</div>
+            <div class="section-title">3. Seleziona lo stile del testo extra:</div>
             <select id="fontSelector" onchange="updatePreview()">
                 <option value="'Poppins', sans-serif">1. Moderno Pulito (Standard)</option>
                 <option value="'Caveat', cursive">2. Corsivo Elegante (Scritto a mano)</option>
@@ -337,7 +326,7 @@
 
         <!-- SEZIONE 4: STILE DELLA GRAFICA -->
         <div class="form-group">
-            <div class="section-title">5. Personalizzazione della stampa:</div>
+            <div class="section-title">4. Personalizzazione della stampa:</div>
             <div class="type-grid">
                 <div class="type-card selected" onclick="selectType(this, 'Grafica Standard')">Grafica Standard</div>
                 <div class="type-card" onclick="selectType(this, 'Grafica + Scritta Extra')">Grafica + Scritta</div>
@@ -349,7 +338,7 @@
 
         <!-- SEZIONE 5: NOTE LIBERE -->
         <div class="form-group">
-            <div class="section-title">6. Descrivi la tua idea nei dettagli (Taglia, Colori...):</div>
+            <div class="section-title">5. Descrivi la tua idea nei dettagli (Taglia, Colori...):</div>
             <textarea id="noteDettagli" rows="4" placeholder="Indica qui la taglia che ti serve (S, M, L, XL), il colore della maglietta (Nera, Bianca...) e qualsiasi dettaglio aggiuntivo..."></textarea>
         </div>
 
@@ -384,7 +373,7 @@
     }
 
     function submitToWhatsApp() {
-        var mioNumero = "3511751215"; // Sostituisci con il tuo numero WhatsApp
+        var mioNumero = "393330000000"; // Sostituisci con il tuo numero WhatsApp reale
         
         var modello = document.getElementById('selectedModel').value;
         var testo = document.getElementById('testoScritta').value || "Nessun testo extra";
